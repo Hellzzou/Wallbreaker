@@ -10,10 +10,11 @@ class Window extends JFrame{
     private Button newGame = new Button("Nouveau", Color.GREEN);
     private Button pause = new Button("Pause", Color.LIGHT_GRAY);
     private Button highScores = new Button("View high scores", Color.LIGHT_GRAY);
-    private JLabel ballsLabel = new JLabel("Balls : 1");
+    private JLabel levelLabel = new JLabel("Level : 1");
     private JLabel scoreLabel = new JLabel("Score : 0");
     private boolean go = true;
     private int score = 0;
+    private int level = 1;
 
     Window(){
         this.setSize(720,610);
@@ -52,12 +53,12 @@ class Window extends JFrame{
     }
     private void initLabelPanel(){
         Font font = new Font("arrial", Font.BOLD, 20);
-        ballsLabel.setFont(font);
-        ballsLabel.addKeyListener(new KeyBoardListener(wallBreaker));
+        levelLabel.setFont(font);
+        levelLabel.addKeyListener(new KeyBoardListener(wallBreaker));
         scoreLabel.setFont(font);
         scoreLabel.addKeyListener(new KeyBoardListener(wallBreaker));
         labelPanel.setLayout(new BorderLayout());
-        labelPanel.add(ballsLabel, BorderLayout.WEST);
+        labelPanel.add(levelLabel, BorderLayout.WEST);
         labelPanel.add(scoreLabel, BorderLayout.EAST);
         labelPanel.addKeyListener(new KeyBoardListener(wallBreaker));
     }
@@ -74,5 +75,15 @@ class Window extends JFrame{
 
     void setScore(int score) {
         this.score = score;
-        this.scoreLabel.setText("Score : "+ this.score); }
+        this.scoreLabel.setText("Score : "+ this.score);
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+        this.levelLabel.setText("Level : " + this.level);
+    }
 }

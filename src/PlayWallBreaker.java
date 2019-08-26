@@ -87,7 +87,7 @@ public class PlayWallBreaker implements Runnable{
             counter ++;
 
             try {
-                Thread.sleep(7);
+                Thread.sleep(7 - (window.getLevel() - 1));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -171,6 +171,9 @@ public class PlayWallBreaker implements Runnable{
         if( counter % 4000 == 0){
             window.getWallBreaker().lowerBlocs();
         }
+        if(counter % 20000 == 0 ){
+            window.setLevel(window.getLevel() + 1);
+        }
     }
     private void manageGuns(){
         if ( window.getWallBreaker().isOkGuns()) {
@@ -187,7 +190,7 @@ public class PlayWallBreaker implements Runnable{
             }
             if ( gunsCounter % 4000 == 0) {
                 window.getWallBreaker().setOkGuns(false);
-                guns = null;
+                guns.clear();
                 gunsCounter = 1;
             }
         }
