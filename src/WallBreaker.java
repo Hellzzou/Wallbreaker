@@ -22,8 +22,9 @@ class WallBreaker extends JPanel {
     private void initBlocs(){
         for ( int i = 5 ; i < 10 ; i++){
             int extraPos = new Random().nextInt(10);
+            int extraPos1 = new Random().nextInt(10);
             for ( int j = 0 ; j < 10 ; j++){
-                if ( j == extraPos) {
+                if ( j == extraPos || j == extraPos1) {
                     int extra = new Random().nextInt(4);
                     Color color;
                     switch (extra) {
@@ -58,7 +59,7 @@ class WallBreaker extends JPanel {
                         String str = "";
                         if ( wall[i][j].getColor() == Color.ORANGE ) str = "bigger";
                         if ( wall[i][j].getColor() == Color.GREEN ) str = "ball";
-                        if ( wall[i][j].getColor() == Color.RED ) str = "gun";
+                        if ( wall[i][j].getColor() == Color.RED ) str = "guns";
                         if ( wall[i][j].getColor() == Color.CYAN ) str = "help";
                         g.setColor(Color.darkGray);
                         g.drawString(str,wall[i][j].getPosX() + 35 - (str.length() / 2 * 6),wall[i][j].getPosY() + 13);
@@ -80,18 +81,43 @@ class WallBreaker extends JPanel {
     }
     void lowerBlocs() {
         for (int i = 24; i >= 5 ; i--) {
+            int extraPos = new Random().nextInt(10);
+            int extraPos1 = new Random().nextInt(10);
             for (int j = 0; j < 10; j++) {
                 if ( i > 5 && wall[j][i - 1] != null){
                     wall[j][i] = new Bloc(wall[j][i-1].getPosX(),wall[j][i-1].getPosY() + 20,71,wall[j][i-1].getColor());
                 }
-                else if ( i == 5 ) wall[j][i] = new Bloc(j * 71,100,71,Color.darkGray);
+                else if ( i == 5 ) {
+                    if ( j == extraPos || j == extraPos1) {
+                        int extra = new Random().nextInt(4);
+                        Color color;
+                        switch (extra) {
+                            case 0:
+                                color = Color.ORANGE;
+                                break;
+                            case 1:
+                                color = Color.RED;
+                                break;
+                            case 2:
+                                color = Color.GREEN;
+                                break;
+                            case 3:
+                                color = Color.CYAN;
+                                break;
+                            default:
+                                color = Color.darkGray;
+                        }
+                        wall[j][i] = new Bloc(j * 71,100,71,color);
+                    }
+                    else wall[j][i] = new Bloc(j * 71,100,71,Color.darkGray);
+                }
             }
         }
     }
 
     Bloc getBreaker() { return breaker; }
 
-    public List<Ball> getBalls() { return balls; }
+    List<Ball> getBalls() { return balls; }
 
     Bloc[][] getWall() { return wall; }
 
