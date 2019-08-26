@@ -5,6 +5,7 @@ public class Bloc {
     private int posY;
     private int size;
     private Color color;
+    private int speed = 20;
 
     Bloc(int posX, int posY, int size, Color color) {
         this.posX = posX;
@@ -12,7 +13,6 @@ public class Bloc {
         this.size = size;
         this.color = color;
     }
-    Bloc(){}
 
     public int getPosX() {
         return posX;
@@ -42,7 +42,13 @@ public class Bloc {
         this.color = color;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setSize(int size) { this.size = size; }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

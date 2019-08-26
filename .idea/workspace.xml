@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c9c7606-5cc4-4140-80bb-b0535c01413f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Gun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/Bloc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/Bloc.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/KeyBoardListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/KeyBoardListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/PlayWallBreaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/PlayWallBreaker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/WallBreaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/WallBreaker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KeyBoardListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KeyBoardListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlayWallBreaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayWallBreaker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WallBreaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WallBreaker.java" afterDir="false" />
     </list>

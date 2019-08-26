@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -9,6 +10,10 @@ class WallBreaker extends JPanel {
         private Bloc breaker = new Bloc(320,480,71, Color.darkGray);
         private List<Ball> balls = new ArrayList<>();
         private boolean lost = false;
+        private List<Gun> guns = new LinkedList<>();
+        private Bloc invicibleBreaker;
+        private boolean okHelp = false;
+        private boolean okGuns = false;
 
     WallBreaker(){
         this.setPreferredSize(new Dimension(710,500));
@@ -25,7 +30,7 @@ class WallBreaker extends JPanel {
             int extraPos1 = new Random().nextInt(10);
             for ( int j = 0 ; j < 10 ; j++){
                 if ( j == extraPos || j == extraPos1) {
-                    int extra = new Random().nextInt(4);
+                    int extra = new Random().nextInt(5);
                     Color color;
                     switch (extra) {
                         case 0:
@@ -39,6 +44,9 @@ class WallBreaker extends JPanel {
                             break;
                         case 3 :
                             color = Color.CYAN;
+                            break;
+                        case 4 :
+                            color = Color.PINK;
                             break;
                         default :
                             color = Color.darkGray;
@@ -61,6 +69,7 @@ class WallBreaker extends JPanel {
                         if ( wall[i][j].getColor() == Color.GREEN ) str = "ball";
                         if ( wall[i][j].getColor() == Color.RED ) str = "guns";
                         if ( wall[i][j].getColor() == Color.CYAN ) str = "help";
+                        if ( wall[i][j].getColor() == Color.PINK ) str = "speed";
                         g.setColor(Color.darkGray);
                         g.drawString(str,wall[i][j].getPosX() + 35 - (str.length() / 2 * 6),wall[i][j].getPosY() + 13);
                     }
@@ -71,6 +80,16 @@ class WallBreaker extends JPanel {
         g.fillRoundRect(breaker.getPosX(),breaker.getPosY(),breaker.getSize() - 2,18,10,10);
         for (Ball ball : balls) {
             g.fillOval(ball.getPosX(), ball.getPosY(), ball.getSize(), ball.getSize());
+        }
+        if ( okHelp ){
+            g.setColor(Color.CYAN);
+            g.fillRect(invicibleBreaker.getPosX(),invicibleBreaker.getPosY(),invicibleBreaker.getSize(),20);
+        }
+        if ( okGuns ){
+            g.setColor(Color.darkGray);
+            for ( Gun gun : guns){
+                g.fillRect(gun.getPosX(),gun.getPosY(),3,16);
+            }
         }
         if (lost){
             Font font = new Font("arrial", Font.BOLD, 50);
@@ -104,6 +123,9 @@ class WallBreaker extends JPanel {
                             case 3:
                                 color = Color.CYAN;
                                 break;
+                            case 4 :
+                                color = Color.PINK;
+                                break;
                             default:
                                 color = Color.darkGray;
                         }
@@ -122,5 +144,19 @@ class WallBreaker extends JPanel {
     Bloc[][] getWall() { return wall; }
 
     void setLost(boolean lost) { this.lost = lost; }
+
+    List<Gun> getGuns() { return guns; }
+
+    boolean isOkGuns() { return okGuns; }
+
+    void setOkGuns(boolean okGuns) { this.okGuns = okGuns; }
+
+    Bloc getInvicibleBreaker() { return invicibleBreaker; }
+
+    void setInvicibleBreaker(Bloc invicibleBreaker) { this.invicibleBreaker = invicibleBreaker; }
+
+    boolean isOkHelp() { return okHelp; }
+
+    void setOkHelp(boolean okHelp) { this.okHelp = okHelp; }
 }
 
