@@ -1,11 +1,11 @@
 import java.awt.*;
 
-public class Bloc {
+class Bloc {
     private int posX;
     private int posY;
     private int size;
     private Color color;
-    private int speed = 20;
+    private int speed = 10;
 
     Bloc(int posX, int posY, int size, Color color) {
         this.posX = posX;
@@ -14,41 +14,29 @@ public class Bloc {
         this.color = color;
     }
 
-    public int getPosX() {
+    int getPosX() {
         return posX;
     }
 
-    public int getPosY() {
+    int getPosY() {
         return posY;
     }
 
-    public Color getColor() {
+    Color getColor() {
         return color;
     }
 
-    public int getSize() {
+    int getSize() {
         return size;
     }
 
-    public void setPosX(int posX) {
+    void setPosX(int posX) {
         this.posX = posX;
     }
 
-    public void setPosY(int posY) {
-        this.posY = posY;
-    }
+    void setSize(int size) { this.size = size; }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
+    int getSpeed() { return speed; }
 
-    public void setSize(int size) { this.size = size; }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
+    void setSpeed(int speed) { this.speed = speed; }
 }

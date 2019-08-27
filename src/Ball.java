@@ -1,67 +1,51 @@
-import java.awt.*;
-
-public class Ball {
+class Ball {
     private int posX;
     private int posY;
     private int size;
-    private boolean frontX = true;
-    private boolean frontY = false;
-    private Color color;
+    private boolean frontX;
+    private boolean frontY;
 
-    public Ball(int posX, int posY, int size, boolean frontX, boolean frontY, Color color) {
+    Ball(int posX, int posY, int size, boolean frontX, boolean frontY) {
         this.posX = posX;
         this.posY = posY;
         this.size = size;
         this.frontX = frontX;
         this.frontY = frontY;
-        this.color = color;
     }
 
-    public int getPosX() {
+    int getPosX() {
         return posX;
     }
 
-    public int getPosY() {
+    int getPosY() {
         return posY;
     }
 
-    public Color getColor() {
-        return color;
-    }
-
-    public int getSize() {
+    int getSize() {
         return size;
     }
 
-    public boolean isFrontX() {
+    boolean isFrontX() {
         return frontX;
     }
 
-    public boolean isFrontY() {
+    boolean isFrontY() {
         return frontY;
     }
 
-    public void setPosX(int posX) {
+    void setPosX(int posX) {
         this.posX = posX;
     }
 
-    public void setPosY(int posY) {
+    void setPosY(int posY) {
         this.posY = posY;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public void setFrontX(boolean frontX) {
+    void setFrontX(boolean frontX) {
         this.frontX = frontX;
     }
 
-    public void setFrontY(boolean frontY) {
+    void setFrontY(boolean frontY) {
         this.frontY = frontY;
     }
 }

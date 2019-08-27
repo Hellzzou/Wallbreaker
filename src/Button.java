@@ -5,11 +5,11 @@ public class Button extends JButton {
     private String name;
     private Color color;
 
-    Button(String name, Color color) {
+    Button(String name, Color color, Window window) {
         this.name = name;
         this.color = color;
         this.setPreferredSize(new Dimension(120,40));
-        //this.addKeyListener(new KeyBoardListener(window));
+        this.addKeyListener(new KeyBoardListener(window));
     }
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;

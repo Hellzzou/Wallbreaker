@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Random;
 
 public class PlayWallBreaker implements Runnable{
     private Bloc[][] wall;
@@ -29,6 +30,37 @@ public class PlayWallBreaker implements Runnable{
     }
 
     public void run(){
+        if ( window.isFirst()){
+            for ( int i = 0 ; i < 10 ; i++){
+                for ( int j = 0 ; j < 25 ; j++) {
+                    wall[i][j] = null;
+                }
+            }
+            for ( int i = 5 ; i < 10 ; i++){
+                window.getWallBreaker().setExtraPos(new Random().nextInt(10));
+                window.getWallBreaker().setExtraPos1(new Random().nextInt(10));
+                for ( int j = 0 ; j < 10 ; j++){
+                    window.getWallBreaker().randomExtras(i,j);
+                }
+            }
+            window.getWallBreaker().getBreaker().setPosX(320);
+            window.getWallBreaker().getBreaker().setSize(71);
+            window.getWallBreaker().getBreaker().setSpeed(10);
+            balls.clear();
+            Ball ball = new Ball(345,460,20,true,false);
+            balls.add(ball);
+            window.setFirst(false);
+            okBig =false;
+            bigCounter = 1;
+            okSpeed =false;
+            speedCounter = 1;
+            window.getWallBreaker().setInvicibleBreaker(null);
+            window.getWallBreaker().setOkHelp(false);
+            helpCounter = 1;
+            window.getWallBreaker().setOkGuns(false);
+            guns.clear();
+            gunsCounter = 1;
+        }
         while(window.isGo()){
             for (Ball ball : balls) {
                 if (ball.isFrontX()) ball.setPosX(ball.getPosX() + 1);
@@ -46,11 +78,15 @@ public class PlayWallBreaker implements Runnable{
                     }
                     else {
                         window.setGo(false);
+                        window.setFirst(true);
                         window.getWallBreaker().setLost(true);
+                        window.disableButton(window.getPause());
+                        window.enableButton(window.getNewGame(),"Nouveau", Color.GREEN);
+                        window.enableButton(window.getHighScores(),"View HighScores",Color.LIGHT_GRAY);
                     }
                 }
                 if ( window.getWallBreaker().getInvicibleBreaker() != null && ((wall[(ball.getPosX() + (ball.getSize() / 2)) / 71][(ball.getPosY() - 1) / 20] != null ||
-                        ball.getPosY() < 460 && wall[(ball.getPosX() + (ball.getSize() / 2)) / 71][(ball.getPosY() + ball.getSize() + 1) / 20] != null) || (ball.getPosY() == 0 || ball.getPosY() == 420))){
+                        ball.getPosY() < 460 && wall[(ball.getPosX() + (ball.getSize() / 2)) / 71][(ball.getPosY() + ball.getSize() + 1) / 20] != null) || (ball.getPosY() == 0 || ball.getPosY() == 460))){
                     destroyBloc((ball.getPosX() + (ball.getSize() / 2)) / 71,(ball.getPosY() - 1) / 20);
                     destroyBloc((ball.getPosX() + (ball.getSize() / 2)) / 71,(ball.getPosY() + ball.getSize() + 1) / 20);
                     ball.setFrontY(!ball.isFrontY());
@@ -77,12 +113,12 @@ public class PlayWallBreaker implements Runnable{
                     ball.setFrontX(!ball.isFrontX());
                 }
             }
-            manageSpeed();
-            manageGuns();
             manageBlocs();
+            manageSpeed();
             manageExtraBalls();
             manageBig();
             manageHelp();
+            manageGuns();
 
             counter ++;
 
@@ -104,11 +140,11 @@ public class PlayWallBreaker implements Runnable{
                 bigCounter = 1;
             }
             if (wall[posX][posY].getColor() == Color.GREEN) {
-                newBall = new Ball(breaker.getPosX() + ( breaker.getSize() / 2 ) - 10, 460, 20, true, false, Color.darkGray);
+                newBall = new Ball(breaker.getPosX() + ( breaker.getSize() / 2 ) - 10, 460, 20, true, false);
                 create = true;
             }
             if (wall[posX][posY].getColor() == Color.CYAN) {
-                window.getWallBreaker().setInvicibleBreaker(new Bloc(0,440,710,Color.CYAN));
+                window.getWallBreaker().setInvicibleBreaker(new Bloc(0,480,710,Color.CYAN));
                 window.getWallBreaker().setOkHelp(true);
                 helpCounter = 1;
             }
@@ -117,7 +153,7 @@ public class PlayWallBreaker implements Runnable{
                 gunsCounter = 1;
             }
             if (wall[posX][posY].getColor() == Color.PINK) {
-                breaker.setSpeed(40);
+                breaker.setSpeed(20);
                 okSpeed = true;
                 speedCounter = 1;
             }
@@ -127,6 +163,7 @@ public class PlayWallBreaker implements Runnable{
         }
     }
     private void manageBig(){
+        window.getBiggerBar().setValue(bigCounter * 100 / 4000);
         if (okBig){
             bigCounter ++;
             if (bigCounter % 4000 == 0){
@@ -138,16 +175,18 @@ public class PlayWallBreaker implements Runnable{
         }
     }
     private void manageSpeed(){
+        window.getSpeedBar().setValue(speedCounter * 100 / 4000);
         if (okSpeed){
             speedCounter ++;
             if (speedCounter % 4000 == 0){
-                breaker.setSpeed(20);
+                breaker.setSpeed(10);
                 okSpeed =false;
                 speedCounter = 1;
             }
         }
     }
     private void manageHelp(){
+        window.getHelpBar().setValue(helpCounter * 100 / 4000);
         if (window.getWallBreaker().isOkHelp()){
             helpCounter ++;
             if (helpCounter % 4000 == 0){
@@ -168,14 +207,17 @@ public class PlayWallBreaker implements Runnable{
         }
     }
     private void manageBlocs(){
+        window.getLevelBar().setValue(counter * 100 / 20000);
         if( counter % 4000 == 0){
             window.getWallBreaker().lowerBlocs();
         }
         if(counter % 20000 == 0 ){
             window.setLevel(window.getLevel() + 1);
+            counter = 1;
         }
     }
     private void manageGuns(){
+        window.getGunsBar().setValue(gunsCounter * 100 / 4000);
         if ( window.getWallBreaker().isOkGuns()) {
             gunsCounter ++;
             ListIterator<Gun> li = guns.listIterator();
