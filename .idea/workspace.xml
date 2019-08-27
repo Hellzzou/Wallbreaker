@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c9c7606-5cc4-4140-80bb-b0535c01413f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Joueur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/Ball.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/Bloc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/Bloc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/Button.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/Gun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/Gun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/KeyBoardListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/KeyBoardListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/PlayWallBreaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/PlayWallBreaker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/WallBreaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/WallBreaker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/WallBreaker/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WallBreaker/Window.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bloc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KeyBoardListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KeyBoardListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlayWallBreaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayWallBreaker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WallBreaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WallBreaker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
@@ -42,6 +32,7 @@
   <component name="ProjectId" id="1PuhhKdc2Hj0hylK6sSWKm31Cze" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />

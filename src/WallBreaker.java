@@ -47,7 +47,40 @@ class WallBreaker extends JPanel {
             g.setFont(font);
             g.setColor(Color.RED);
             g.drawString("PERDU", 250, 300);
+            writeNewHighScore();
         }
+    }
+    private void writeNewHighScore(){
+        int counter = 1;
+        boolean found = false;
+        FileReader filereader = new FileReader();
+        List<Joueur> joueurs = filereader.getJoueurs();
+        if ( joueurs.size() == 0 ){
+            System.out.println("1");
+            String name = JOptionPane.showInputDialog(null,"Vous entrez dans le top 5, veuillez entrer votre nom : ", "Top 5 !",JOptionPane.QUESTION_MESSAGE);
+            joueurs.add(new Joueur(name,window.getScore(),window.getLevel()));
+            found = true;
+        }
+        else {
+            System.out.println("2");
+            for (int i = 0; i < joueurs.size(); i++) {
+                if (!found) {
+                    if (window.getScore() > joueurs.get(i).getScore()) {
+                        String name = JOptionPane.showInputDialog(null, "Vous entrez dans le top 5, veuillez entrer votre nom : ", "Top 5 !", JOptionPane.QUESTION_MESSAGE);
+                        joueurs.add(i, new Joueur(name, window.getScore(), window.getLevel()));
+                        found = true;
+                    }
+                    counter++;
+                }
+                if (i >= 5) joueurs.remove(i);
+            }
+        }
+        if ( counter < 5  && !found) {
+            System.out.println("3");
+            String name = JOptionPane.showInputDialog(null,"Vous entrez dans le top 5, veuillez entrer votre nom : ", "Top 5 !",JOptionPane.QUESTION_MESSAGE);
+            joueurs.add(new Joueur(name,window.getScore(),window.getLevel()));
+        }
+        FileWriter fileWriter = new FileWriter(joueurs);
     }
     private void paintGunsAndInvincibility(Graphics g){
         if ( okHelp ){
@@ -152,6 +185,10 @@ class WallBreaker extends JPanel {
 
     public void setExtraPos1(int extraPos1) {
         this.extraPos1 = extraPos1;
+    }
+
+    public boolean isLost() {
+        return lost;
     }
 }
 

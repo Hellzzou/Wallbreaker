@@ -128,7 +128,7 @@ public class PlayWallBreaker implements Runnable{
                 e.printStackTrace();
             }
 
-            window.getWallBreaker().repaint();
+            if ( !window.getWallBreaker().isLost()) window.getWallBreaker().repaint();
         }
     }
     private void destroyBloc(int posX, int posY) {

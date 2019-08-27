@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
+import java.util.ArrayList;
 
 class Window extends JFrame{
     private JPanel labelPanel = new JPanel();
@@ -18,6 +20,7 @@ class Window extends JFrame{
     private Button highScores = new Button("View high scores", Color.LIGHT_GRAY,this);
     private JLabel levelLabel = new JLabel("Level : 1");
     private JLabel scoreLabel = new JLabel("Score : 0");
+    private List<Joueur> joueurs = new ArrayList<>();
     private boolean go = false;
     private boolean first = false;
     private int score = 0;
@@ -82,6 +85,16 @@ class Window extends JFrame{
                 });
         disableButton(pause);
         highScores.setPreferredSize(new Dimension(150,40));
+        highScores.addActionListener(e->{
+                    FileReader filereader = new FileReader();
+                    joueurs = filereader.getJoueurs();
+                    String top5 = "\t" + "\tTOP5\n";
+                    for (int i = 0 ; i < joueurs.size() ; i++){
+                        top5 += i + 1 + "\t" + joueurs.get(i).toString();
+                    }
+                    JOptionPane jop = new JOptionPane();
+                    jop.showMessageDialog(null, top5, "TOP5",JOptionPane.INFORMATION_MESSAGE);
+                });
         buttonPanel.add(newGame);
         buttonPanel.add(pause);
         buttonPanel.add(highScores);

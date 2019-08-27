@@ -10,6 +10,9 @@ class Joueur implements Serializable {
         this.score = score;
         this.level = level;
     }
+    public String toString(){
+        return this.name + "\t" + this.level + "\t" + this.score + "\n";
+    }
     String getName() {
         return name;
     }
